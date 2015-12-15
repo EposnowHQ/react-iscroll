@@ -60,7 +60,8 @@ export default class ReactIScroll extends React.Component {
       height: "100%",
       width: "100%",
       overflow: "hidden"
-    }
+    },
+    equalityFunction: equal
   }
 
   constructor(props) {
@@ -79,7 +80,7 @@ export default class ReactIScroll extends React.Component {
 
   // There is no state, we can compare only props.
   shouldComponentUpdate(nextProps) {
-    return !equal(this.props, nextProps)
+    return !this.props.equalityFunction(this.props, nextProps)
   }
 
   // Check if iscroll options has changed and recreate instance with new one
